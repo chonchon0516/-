@@ -8,16 +8,16 @@ $pdo = new PDO(
     $dbPassword
 );
 
-$content = filter_input(INPUT_POST, 'content');
+$impressions = filter_input(INPUT_POST, 'impressions');
 $title = filter_input(INPUT_POST, 'title');
 
 
 // [解説！]ガード節になっている
-if (!empty($title) && !empty($content)) {
-    $sql = 'INSERT INTO `pages`(`title`, `content`) VALUES(:title, :content)';
+if (!empty($title) && !empty($impressions)) {
+    $sql = 'INSERT INTO `books`(`title`, `impressions`) VALUES(:title, :impressions)';
     $statement = $pdo->prepare($sql);
     $statement->bindValue(':title', $title, PDO::PARAM_STR);
-    $statement->bindValue(':content', $content, PDO::PARAM_STR);
+    $statement->bindValue(':impressions', $impressions, PDO::PARAM_STR);
     $statement->execute();
 
     // [解説！]リダイレクト処理

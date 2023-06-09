@@ -30,9 +30,9 @@ $page = $statement->fetch();
     </div>
 
     <div>
-      <label for="content">感想
-        <input type="textarea" name="content" value=<?php echo $page[
-            'content'
+      <label for="impressions">感想
+        <input type="textarea" name="impressions" value=<?php echo $page[
+            'impressions'
         ]; ?>>
       </label>
     </div>

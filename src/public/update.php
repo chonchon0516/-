@@ -10,8 +10,9 @@ $pdo = new PDO(
 $id = filter_input(INPUT_POST, 'id');
 $title = filter_input(INPUT_POST, 'title');
 $impressions = filter_input(INPUT_POST, 'impressions');
-
-
+// var_dump($title);
+// var_dump($impressions);
+// die;
 if (!empty($title) && !empty($impressions)) {
     $sql = 'UPDATE books SET title=:title, impressions=:impressions WHERE id = :id';
     $statement = $pdo->prepare($sql);

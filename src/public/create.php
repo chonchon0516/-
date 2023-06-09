@@ -11,7 +11,7 @@
 
     <div>
       <label for="content">感想
-        <input type="textarea" name="content" placeholder="感想">
+        <input type="textarea" name="impressions" placeholder="感想">
       </label>
     </div>
 

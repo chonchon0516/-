@@ -1,5 +1,4 @@
 <?php
-
 $dbUserName = 'root';
 $dbPassword = 'password';
 $pdo = new PDO(
@@ -8,24 +7,26 @@ $pdo = new PDO(
     $dbPassword
 );
 
-$impressions = filter_input(INPUT_POST, 'impressions');
+$id = filter_input(INPUT_POST, 'id');
 $title = filter_input(INPUT_POST, 'title');
-
-
-// [解説！]ガード節になっている
+$impressions = filter_input(INPUT_POST, 'impressions');
+// var_dump($title);
+// var_dump($impressions);
+// die;
 if (!empty($title) && !empty($impressions)) {
-    $sql = 'INSERT INTO `books`(`title`, `impressions`) VALUES(:title, :impressions)';
+    $sql = 'UPDATE books SET title=:title, impressions=:impressions WHERE id = :id';
     $statement = $pdo->prepare($sql);
+    $statement->bindValue(':id', $id, PDO::PARAM_INT);
     $statement->bindValue(':title', $title, PDO::PARAM_STR);
     $statement->bindValue(':impressions', $impressions, PDO::PARAM_STR);
     $statement->execute();
 
-    // [解説！]リダイレクト処理
     header('Location: ./index.php');
-    // [解説！]リダイレクトしても処理が一番下まで続いてしまうので「exit」しておこう！！！
     exit();
 }
-$error = 'タイトルまたは感想が入力されていません';
+$error = 'タイトルまたは本文が入力されていません';
+
+
 ?>
 
 <body>

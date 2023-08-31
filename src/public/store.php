@@ -1,7 +1,7 @@
 <?php
 
 require_once __DIR__ . '/../vendor/autoload.php';
-use App\LearningBook;
+use App\BookManager;
 
 
 $impressions = filter_input(INPUT_POST, 'impressions');
@@ -10,7 +10,7 @@ $title = filter_input(INPUT_POST, 'title');
 
 // [解説！]ガード節になっている
 if (!empty($title) && !empty($impressions)) {
-    $store = new LearningBook();
+    $store = new BookManager();
     $store->storeBook($title,$impressions);
 
     // [解説！]リダイレクト処理

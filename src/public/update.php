@@ -1,6 +1,6 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
-use App\LearningBook;
+use App\BookManager;
 
 $id = filter_input(INPUT_POST, 'id');
 $title = filter_input(INPUT_POST, 'title');
@@ -9,7 +9,7 @@ $impressions = filter_input(INPUT_POST, 'impressions');
 // var_dump($impressions);
 // die;
 if (!empty($title) && !empty($impressions)) {
-    $update = new LearningBook();
+    $update = new BookManager();
     $update->updateBook($id,$title,$impressions);
 
     header('Location: ./index.php');

@@ -1,8 +1,8 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
-use App\LearningBook;
+use App\BookManager;
 
-$delete = new LearningBook();
+$delete = new BookManager();
 $id = filter_input(INPUT_GET, 'id');
 $delete->deleteBook($id);
 

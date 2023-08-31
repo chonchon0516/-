@@ -1,10 +1,10 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
-use App\LearningBook;
+use App\BookManager;
 
-$learningBook = new LearningBook();
+$bookManager = new BookManager();
 $id = filter_input(INPUT_GET, 'id', FILTER_SANITIZE_NUMBER_INT);
-$book = $learningBook->findBookById($id);
+$book = $bookManager->findBookById($id);
 
 ?>
 

@@ -2,7 +2,7 @@
 namespace App;
 use PDO;
 
-class LearningBook
+class BookManager
 {
   private $pdo;
 

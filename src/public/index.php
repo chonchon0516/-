@@ -1,9 +1,9 @@
 <?php
 require_once __DIR__ . '/../vendor/autoload.php';
-use App\LearningBook;
+use App\BookManager;
 
-$learnigBook = new LearningBook();
-$pages = $learnigBook->fetchAllBooks();
+$bookManager = new BookManager();
+$pages = $bookManager->fetchAllBooks();
 
 foreach ($pages as $key => $value) {
     $standard_key_array[$key] = $value['created_at'];

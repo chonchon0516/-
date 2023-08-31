@@ -10,8 +10,8 @@ $title = filter_input(INPUT_POST, 'title');
 
 // [解説！]ガード節になっている
 if (!empty($title) && !empty($impressions)) {
-    $store = new BookManager();
-    $store->storeBook($title,$impressions);
+    $bookManager = new BookManager();
+    $bookManager->storeBook($title,$impressions);
 
     // [解説！]リダイレクト処理
     header('Location: ./index.php');

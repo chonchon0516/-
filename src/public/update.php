@@ -9,8 +9,8 @@ $impressions = filter_input(INPUT_POST, 'impressions');
 // var_dump($impressions);
 // die;
 if (!empty($title) && !empty($impressions)) {
-    $update = new BookManager();
-    $update->updateBook($id,$title,$impressions);
+    $bookManager = new BookManager();
+    $bookManager->updateBook($id,$title,$impressions);
 
     header('Location: ./index.php');
     exit();

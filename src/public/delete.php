@@ -2,9 +2,9 @@
 require_once __DIR__ . '/../vendor/autoload.php';
 use App\BookManager;
 
-$delete = new BookManager();
+$bookManager = new BookManager();
 $id = filter_input(INPUT_GET, 'id');
-$delete->deleteBook($id);
+$$bookManager->deleteBook($id);
 
 
 header('Location: ./index.php');

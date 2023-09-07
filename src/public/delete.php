@@ -1,16 +1,11 @@
 <?php
-$dbUserName = 'root';
-$dbPassword = 'password';
-$pdo = new PDO(
-    'mysql:host=mysql; dbname=booksmanagement; charset=utf8',
-    $dbUserName,
-    $dbPassword
-);
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\BookManager;
 
+$bookManager = new BookManager();
 $id = filter_input(INPUT_GET, 'id');
-$sql = "DELETE FROM books where id = $id";
-$statement = $pdo->prepare($sql);
-$statement->execute();
+$$bookManager->deleteBook($id);
+
 
 header('Location: ./index.php');
 exit();

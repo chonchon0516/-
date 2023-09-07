@@ -1,11 +1,6 @@
 <?php
-$dbUserName = 'root';
-$dbPassword = 'password';
-$pdo = new PDO(
-    'mysql:host=mysql; dbname=booksmanagement; charset=utf8',
-    $dbUserName,
-    $dbPassword
-);
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\BookManager;
 
 $id = filter_input(INPUT_POST, 'id');
 $title = filter_input(INPUT_POST, 'title');
@@ -14,12 +9,8 @@ $impressions = filter_input(INPUT_POST, 'impressions');
 // var_dump($impressions);
 // die;
 if (!empty($title) && !empty($impressions)) {
-    $sql = 'UPDATE books SET title=:title, impressions=:impressions WHERE id = :id';
-    $statement = $pdo->prepare($sql);
-    $statement->bindValue(':id', $id, PDO::PARAM_INT);
-    $statement->bindValue(':title', $title, PDO::PARAM_STR);
-    $statement->bindValue(':impressions', $impressions, PDO::PARAM_STR);
-    $statement->execute();
+    $bookManager = new BookManager();
+    $bookManager->updateBook($id,$title,$impressions);
 
     header('Location: ./index.php');
     exit();

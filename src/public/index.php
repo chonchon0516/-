@@ -1,16 +1,10 @@
 <?php
-$dbUserName = 'root';
-$dbPassword = 'password';
-$pdo = new PDO(
-    'mysql:host=mysql; dbname=booksmanagement; charset=utf8',
-    $dbUserName,
-    $dbPassword
-);
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\BookManager;
 
-$sql = "SELECT * FROM books";
-$statement = $pdo->prepare($sql);
-$statement->execute();
-$pages = $statement->fetchAll(PDO::FETCH_ASSOC);
+$bookManager = new BookManager();
+$pages = $bookManager->fetchAllBooks();
+
 foreach ($pages as $key => $value) {
     $standard_key_array[$key] = $value['created_at'];
 }

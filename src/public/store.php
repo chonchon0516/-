@@ -1,12 +1,8 @@
 <?php
 
-$dbUserName = 'root';
-$dbPassword = 'password';
-$pdo = new PDO(
-    'mysql:host=mysql; dbname=booksmanagement; charset=utf8',
-    $dbUserName,
-    $dbPassword
-);
+require_once __DIR__ . '/../vendor/autoload.php';
+use App\BookManager;
+
 
 $impressions = filter_input(INPUT_POST, 'impressions');
 $title = filter_input(INPUT_POST, 'title');
@@ -14,11 +10,8 @@ $title = filter_input(INPUT_POST, 'title');
 
 // [解説！]ガード節になっている
 if (!empty($title) && !empty($impressions)) {
-    $sql = 'INSERT INTO `books`(`title`, `impressions`) VALUES(:title, :impressions)';
-    $statement = $pdo->prepare($sql);
-    $statement->bindValue(':title', $title, PDO::PARAM_STR);
-    $statement->bindValue(':impressions', $impressions, PDO::PARAM_STR);
-    $statement->execute();
+    $bookManager = new BookManager();
+    $bookManager->storeBook($title,$impressions);
 
     // [解説！]リダイレクト処理
     header('Location: ./index.php');
